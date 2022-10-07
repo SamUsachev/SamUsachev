@@ -1,0 +1,14 @@
+.nav {
+  grid-area: n;
+  background-color: rgb(160, 155, 113);
+}
+.text {
+  line-height: 6ch;
+  margin-top: 4ch;
+  font-size: 3ch;
+  font-family: Roboto;
+}
+.text a {
+  color: azure;
+  text-decoration: none;
+}
