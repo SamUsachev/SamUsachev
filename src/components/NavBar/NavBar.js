@@ -6,7 +6,7 @@ function NavBar() {
     <nav className={style.nav}>
       <ul className={style.text}>
         <ol>
-          <NavLink to='profile'>Profile</NavLink>
+          <NavLink to='profile'> Profile</NavLink>
         </ol>
         <ol>
           <NavLink to='messages'>Messages</NavLink>
