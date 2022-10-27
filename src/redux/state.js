@@ -1,46 +1,50 @@
-import { rerenderEntireTree } from "../render"
+import dialogsReducer from './dialogsReducer';
+import profileReducer from './profileReducer';
 
-let state = {
-
-    postsPage :{
-        postData : [
-            { message: 'Today I learned something new', id: '1', likeCount: '15 likes' },
-            { message: 'Hey, How are you?', id: '2', likeCount: '19 likes' },
-            { message: 'Very happy', id: '3', likeCount: '12 likes' },
-          ],
-          newPostText : 'What do you think?',
+let store = {
+  _state: {
+    postsPage: {
+      postData: [
+        {
+          message: 'Today I learned something new',
+          id: '1',
+          likeCount: '15 likes',
+        },
+        { message: 'Hey, How are you?', id: '2', likeCount: '19 likes' },
+        { message: 'Very happy', id: '3', likeCount: '12 likes' },
+      ],
+      newPostText: '',
     },
-    dialogsPage : {
-        messageData : [
-            { message: 'Hey' },
-            { message: 'How are you?' },
-            { message: 'Thanks' },
-          ],          
-        dialogData : [
-            { name: 'Sam', id: '1' },
-            { name: 'Victor', id: '2' },
-            { name: 'Alena', id: '3' },
-          ]
+    dialogsPage: {
+      messageData: [
+        { message: 'Hey', id: '1' },
+        { message: 'How are you?', id: '2' },
+        { message: 'Thanks', id: '3' },
+      ],
+      dialogData: [
+        { name: 'Sam', id: '1' },
+        { name: 'Victor', id: '2' },
+        { name: 'Alena', id: '3' },
+      ],
+      newMessageText: '',
     },
-}
-window.state = state
+  },
+  getState() {
+    return this._state;
+  },
+  _callSubscriber() {},
 
-export let addNewPost = () =>{
+  subscribe(observer) {
+    this._callSubscriber = observer;
+  },
 
-  let newPost ={
-    message: state.postsPage.newPostText,
-    id: 4,
-    likeCount: '0 likes'
+  dispatch(action) {
+    this._state.postsPage = profileReducer(this._state.postsPage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    this._callSubscriber(this._state);
+  },
+};
 
-  } 
-  state.postsPage.postData.push(newPost)
-  state.postsPage.newPostText = ''
-  rerenderEntireTree(state)
-}
+window.storage = storage;
 
-export let updateNewPostText = (newText) =>{
-  state.postsPage.newPostText = newText
-  rerenderEntireTree(state)
-}
-
-export default state
+export default store;

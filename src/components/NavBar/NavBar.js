@@ -6,19 +6,19 @@ function NavBar() {
     <nav className={style.nav}>
       <ul className={style.text}>
         <ol>
-          <NavLink to='profile'> Profile</NavLink>
+          <NavLink to='profile'><a className={style.but}>Profile</a> </NavLink>
         </ol>
         <ol>
-          <NavLink to='messages'>Messages</NavLink>
+          <NavLink to='messages'><a className={style.but}>Messages</a></NavLink>
         </ol>
         <ol>
-          <a href='news'>News</a>
+          <a href='news' className={style.but}>News</a>
         </ol>
         <ol>
-          <a href='music'>Music</a>
+          <a href='music' className={style.but}>Music</a>
         </ol>
         <ol>
-          <a href='settings'>Settings</a>
+          <a href='settings' className={style.but}>Settings</a>
         </ol>
       </ul>
     </nav>

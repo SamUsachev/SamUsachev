@@ -1,10 +1,10 @@
-import React from 'react'
-import './App.css'
-import Dialogs from './components/Dialogs/Dialogs'
-import Header from './components/Header/Header'
-import NavBar from './components/NavBar/NavBar'
-import Profile from './components/Profile/Profile'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import React from 'react';
+import './App.css';
+import Dialogs from './components/Dialogs/Dialogs';
+import Header from './components/Header/Header';
+import NavBar from './components/NavBar/NavBar';
+import Profile from './components/Profile/Profile';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App(props) {
   return (
@@ -15,21 +15,33 @@ function App(props) {
           <NavBar />
           <div className='App-content'>
             <Routes>
-              <Route path='/profile' element={<Profile postData = 
-              {props.postData} 
-              addNewPost = 
-              {props.addNewPost} 
-              newPostText = 
-              {props.newPostText}
-              updateNewPostText =
-              {props.updateNewPostText} />} />
-              <Route path='/messages' element={<Dialogs dialogData = {props.dialogData} messageData = {props.messageData} />} />
+              <Route
+                path='/profile'
+                element={
+                  <Profile
+                    postData={props.state.postsPage.postData}
+                    newPostText={props.state.postsPage.newPostText}
+                    dispatch={props.dispatch}
+                  />
+                }
+              />
+              <Route
+                path='/messages'
+                element={
+                  <Dialogs
+                    dialogData={props.state.dialogsPage.dialogData}
+                    messageData={props.state.dialogsPage.messageData}
+                    newMessageText={props.state.dialogsPage.newMessageText}
+                    dispatch={props.dispatch}
+                  />
+                }
+              />
             </Routes>
           </div>
         </div>
       </div>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -10,7 +10,7 @@
 }
 
 .AppBack {
-  background-color: darkslategray;
+  background: linear-gradient(#ebebeb, #3aab49 45%);
 }
 .App-content {
   grid-area: c;
