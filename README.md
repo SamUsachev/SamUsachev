@@ -1,4 +1,4 @@
-#### ## Hi devs, i`m Sam Usachev!
+#### Hi devs, i`m Sam Usachev!
 
 ------------
 
